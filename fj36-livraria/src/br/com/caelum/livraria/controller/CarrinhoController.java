@@ -14,6 +14,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import br.com.caelum.livraria.modelo.Carrinho;
 import br.com.caelum.livraria.modelo.Formato;
 import br.com.caelum.livraria.modelo.Livro;
+<<<<<<< HEAD
+=======
+import br.com.caelum.livraria.modelo.Pagamento;
+>>>>>>> 76dfe4f20158fe74c754ec1de68373ac80a1c23f
 import br.com.caelum.livraria.modelo.Pedido;
 
 @Controller
@@ -127,7 +131,11 @@ public class CarrinhoController{
 	public String listar() throws Exception {
 		
 		//verificacao do estoque aqui
+<<<<<<< HEAD
 		this.carrinho.verificaDisponibilidadeDosItensComSoap();
+=======
+		this.carrinho.vericarDisponibilidadeDosItensComRmi();
+>>>>>>> 76dfe4f20158fe74c754ec1de68373ac80a1c23f
 		
 		return JSP_CARRINHO_LISTAR;
 	}

@@ -2,6 +2,13 @@ package br.com.caelum.livraria.modelo;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+<<<<<<< HEAD
+=======
+import java.net.MalformedURLException;
+import java.rmi.Naming;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
+>>>>>>> 76dfe4f20158fe74c754ec1de68373ac80a1c23f
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.LinkedHashSet;
@@ -12,6 +19,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+<<<<<<< HEAD
 import br.com.caelum.correios.soap.ConsumidorServicoCorreios;
 import br.com.caelum.estoque.soap.EstoqueWs;
 import br.com.caelum.estoque.soap.EstoqueWsService;
@@ -24,6 +32,13 @@ import br.com.caelum.livraria.rest.ClienteRest;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 
+=======
+import br.com.caelum.estoque.rmi.EstoqueRmi;
+import br.com.caelum.estoque.rmi.ItemEstoque;
+import br.com.caelum.livraria.jms.EnviadorMensagemJms;
+import br.com.caelum.livraria.rest.ClienteRest;
+
+>>>>>>> 76dfe4f20158fe74c754ec1de68373ac80a1c23f
 @Component
 @Scope("session")
 public class Carrinho implements Serializable {
@@ -108,9 +123,12 @@ public class Carrinho implements Serializable {
 		this.cepDestino = novoCepDestino;
 
 		//servico web do correios aqui
+<<<<<<< HEAD
 		
 		ConsumidorServicoCorreios servicoCorreios = new ConsumidorServicoCorreios();
 		this.valorFrete = servicoCorreios.calculaFrete(novoCepDestino);
+=======
+>>>>>>> 76dfe4f20158fe74c754ec1de68373ac80a1c23f
 	}
 
 	public String getCepDestino() {
@@ -165,6 +183,7 @@ public class Carrinho implements Serializable {
 		return false;
 	}
 
+<<<<<<< HEAD
 	private void atualizarQuantidadeDisponivelDoItemCompra(final ItemEstoque itemEstoque) {
 		ItemCompra item = Iterables.find(this.itensDeCompra, new Predicate<ItemCompra>() {
 
@@ -176,6 +195,19 @@ public class Carrinho implements Serializable {
 
 		item.setQuantidadeNoEstoque(itemEstoque.getQuantidade());
 	}
+=======
+//	private void atualizarQuantidadeDisponivelDoItemCompra(final ItemEstoque itemEstoque) {
+//		ItemCompra item = Iterables.find(this.itensDeCompra, new Predicate<ItemCompra>() {
+//
+//			@Override
+//			public boolean apply(ItemCompra item) {
+//				return item.temCodigo(itemEstoque.getCodigo());
+//			}
+//		});
+//
+//		item.setQuantidadeNoEstoque(itemEstoque.getQuantidade());
+//	}
+>>>>>>> 76dfe4f20158fe74c754ec1de68373ac80a1c23f
 
 	private void limparCarrinho() {
 		this.itensDeCompra = new LinkedHashSet<>();
@@ -237,6 +269,7 @@ public class Carrinho implements Serializable {
 		return numeroCartao != null && titularCartao != null;
 	}
 
+<<<<<<< HEAD
 	//public void vericarDisponibilidadeDosItensComRmi() throws RemoteException, MalformedURLException, NotBoundException {
 
 		//EstoqueRmi estoqueRmi = (EstoqueRmi) Naming.lookup("rmi://localhost:1099/estoque");
@@ -267,6 +300,22 @@ public class Carrinho implements Serializable {
 		
 		for(final ItemEstoque itemEstoque : itensNoEstoque) {
 			atualizarQuantidadeDisponivelDoItemCompra(itemEstoque);
+=======
+	public void vericarDisponibilidadeDosItensComRmi() throws RemoteException, MalformedURLException, NotBoundException {
+
+		EstoqueRmi estoqueRmi = (EstoqueRmi) Naming.lookup("rmi://localhost:1099/estoque");
+		
+		for(ItemCompra itemCompra : this.itensDeCompra) {
+			
+			if(itemCompra.isImpresso()) {
+				
+				System.out.println("Verificacao da quantidade do livro: " + itemCompra.getTitulo());
+				
+				ItemEstoque itemEstoque = estoqueRmi.getItemEstoque(itemCompra.getCodigo());
+				
+				itemCompra.setQuantidadeNoEstoque(itemEstoque.getQuantidade());
+			}
+>>>>>>> 76dfe4f20158fe74c754ec1de68373ac80a1c23f
 		}
 	}
 }
