@@ -2,7 +2,6 @@ package br.com.caelum.livraria.rest;
 
 import java.io.Serializable;
 
-<<<<<<< HEAD
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.Entity;
@@ -11,11 +10,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.context.annotation.Scope;
 
 import br.com.caelum.livraria.modelo.Link;
-=======
-import org.springframework.stereotype.Component;
-import org.springframework.context.annotation.Scope;
-
->>>>>>> 76dfe4f20158fe74c754ec1de68373ac80a1c23f
 import br.com.caelum.livraria.modelo.Pagamento;
 import br.com.caelum.livraria.modelo.Transacao;
 
@@ -30,7 +24,6 @@ public class ClienteRest implements Serializable {
 	private static final String ENTRY_POINT = "/pagamentos/";
 
 	public Pagamento criarPagamento(Transacao transacao) {
-<<<<<<< HEAD
 		
 		Client cliente = ClientBuilder.newClient();
 		Pagamento resposta = cliente.target(SERVER_URI + ENTRY_POINT).request()
@@ -46,7 +39,7 @@ public class ClienteRest implements Serializable {
 		Link linkConfirmar = pagamento.getLinkPeloRel("confirmar");
 		Client cliente = ClientBuilder.newClient();
 		
-		Pagamento resposta = cliente.target(SERVER_URI + linkConfirmar.getUri())
+		Pagamento resposta = cliente.target(SERVER_URI + ENTRY_POINT + pagamento.getId())
 				.request()
 				.build(linkConfirmar.getMethod())
 				.invoke(Pagamento.class);
@@ -54,13 +47,6 @@ public class ClienteRest implements Serializable {
 		System.out.println("Pagamento confirmado, id:" + resposta.getId());
 		
 		return resposta;
-=======
-		return null;
-	}
-
-	public Pagamento confirmarPagamento(Pagamento pagamento) {
-		return null;
->>>>>>> 76dfe4f20158fe74c754ec1de68373ac80a1c23f
 	}
 
 }

@@ -55,28 +55,28 @@
 	
 	
 	<!-- Configuração para acessar o JMS -->
-<!-- 	<bean id="jmsJndiTemplate" class="org.springframework.jndi.JndiTemplate"> -->
-<!-- 		<property name="environment"> -->
-<!-- 			<props> -->
-<!-- 				<prop key="java.naming.factory.initial"> -->
-<!-- 					org.jboss.naming.remote.client.InitialContextFactory -->
-<!-- 				</prop> -->
-<!-- 				<prop key="java.naming.provider.url"> -->
-<!-- 					http-remoting://localhost:8080 -->
-<!-- 				</prop> -->
-<!-- 			</props> -->
-<!-- 		</property> -->
-<!-- 	</bean> -->
+ 	<bean id="jmsJndiTemplate" class="org.springframework.jndi.JndiTemplate"> 
+ 		<property name="environment"> 
+ 			<props> 
+ 				<prop key="java.naming.factory.initial"> 
+ 					org.jboss.naming.remote.client.InitialContextFactory 
+ 				</prop> 
+ 				<prop key="java.naming.provider.url"> 
+ 					http-remoting://localhost:8080 
+ 				</prop> 
+ 			</props> 
+ 		</property> 
+ 	</bean>
 
-<!-- 	<bean id="hornetQConnectionFactory" class="org.springframework.jndi.JndiObjectFactoryBean"> -->
-<!-- 		<property name="jndiTemplate" ref="jmsJndiTemplate" /> -->
-<!-- 		<property name="jndiName" value="jms/RemoteConnectionFactory" /> -->
-<!-- 	</bean> -->
+ 	<bean id="hornetQConnectionFactory" class="org.springframework.jndi.JndiObjectFactoryBean"> 
+ 		<property name="jndiTemplate" ref="jmsJndiTemplate" /> 
+ 		<property name="jndiName" value="jms/RemoteConnectionFactory" /> 
+ 	</bean> 
 
-<!-- 	<bean id="topicoLivraria" class="org.springframework.jndi.JndiObjectFactoryBean"> -->
-<!-- 		<property name="jndiTemplate" ref="jmsJndiTemplate" /> -->
-<!-- 		<property name="jndiName" value="jms/TOPICO.LIVRARIA" /> -->
-<!-- 	</bean> -->
+ 	<bean id="topicoLivraria" class="org.springframework.jndi.JndiObjectFactoryBean"> 
+ 		<property name="jndiTemplate" ref="jmsJndiTemplate" /> 
+ 		<property name="jndiName" value="jms/TOPICO.LIVRARIA" /> 
+ 	</bean> 
 
 
 	<!-- Configuração do JMS para o Camel -->
@@ -89,4 +89,4 @@
 <!-- 		<property name="destinationResolver" ref="camelDestinationResolver" /> -->
 <!-- 	</bean> -->
 
-</beans>
+</beans> 
