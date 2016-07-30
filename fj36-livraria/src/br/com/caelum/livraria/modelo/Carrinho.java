@@ -266,6 +266,7 @@ public class Carrinho implements Serializable {
 		List<ItemEstoque> itensNoEstoque = resposta.getItemEstoque();
 		
 		for(final ItemEstoque itemEstoque : itensNoEstoque) {
+			System.out.println(itemEstoque);
 			atualizarQuantidadeDisponivelDoItemCompra(itemEstoque);
 		}
 	}
